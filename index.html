@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/75e154bde7.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .sidebar ul li:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h1>PowerToys</h1>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-eye-dropper"></i> Color Picker</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-info-circle"></i> About</a>
+        </li>
+      </ul>
+    </div>
+    <div class="color-picker"></div>
+    <script>
+      Coloris({
+        parent: ".color-picker",
+        rtl: true,
+        theme: "large",
+        themeMode: "dark",
+        position: "top",
+        inline: true,
+        format: "auto",
+        alpha: true,
+      });
+    </script>
+  </body>
+</html>
