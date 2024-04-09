@@ -8,64 +8,14 @@
     <script src="https://kit.fontawesome.com/75e154bde7.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <h1>PowerToys</h1>
-        <ul>
-          <li><i class="fa-solid fa-magnifying-glass"></i></li>
-          <li><a href="# "><i class="fa-solid fa-user"></i></a></li>
-        </ul>
-    </header>
-ik wilde eig ook een populair rij maken van de meest gebruikte tools enz, persoonlijkl en sws en favoriet weet je wel
-maar lukte ff ni zo snel dus je mag t zelf doen als je wilt en je moet ff de kleuren aanpassen bla bla bla bla aids
 
-    <div class="container">
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      <div class="item">
-        <img src="img/test.webp" alt="">
-        <h1>Item</h1>
-      </div>
-      
-     
-    </div>
-
-    <!-- <div class="sidebar">
-      <h1>PowerToys</h1>
+ <div class="sidebar" >
+  <span class="logo"><h1>Power <strong>Toys</strong></h1></span>
       <ul>
-        <li>
+        <li onclick="show('color-picker')" >
           <a href="#"><i class="fas fa-eye-dropper"></i> Color Picker</a>
         </li>
-        <li>
+        <li onclick="show('passGen')">
           <a href="#"><i class="fas fa-palette"></i> Color Palette</a>
         </li>
         <li>
@@ -85,8 +35,14 @@ maar lukte ff ni zo snel dus je mag t zelf doen als je wilt en je moet ff de kle
           <a href="#"><i class="fas fa-info-circle"></i> About</a>
         </li>
       </ul>
-    </div> -->
-    <div class="color-picker"></div>
+    </div>
+    <div class="color-picker" id="color-picker"></div>
+    <div class="pass-gen"  id="pass-gen">
+      <form action="">
+        <input type="text">
+        <input readonly type="text">
+      </form>
+    </div>
     <script>
       Coloris({
         parent: ".color-picker",
@@ -99,5 +55,6 @@ maar lukte ff ni zo snel dus je mag t zelf doen als je wilt en je moet ff de kle
         alpha: true,
       });
     </script>
+    <script src="script.js"></script>
   </body>
 </html>
