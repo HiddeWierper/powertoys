@@ -223,3 +223,23 @@ a:hover {
   margin: 0%;
   border-radius: 8px;
 }
+
+.account-privacy-content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.account-privacy{
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5vh;
+  color: white;
+}
+
+

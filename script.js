@@ -4,6 +4,19 @@ function show(id) {
 
   var otherElements = ["color-picker", "pass-gen"];
 
+
+var otherElements = ['color-picker', 'pass-gen', ' account-privacy', 'color-theme'];
+
+// Verberg alle andere elementen
+otherElements.forEach(function(otherId) {
+  if (otherId !== id) {
+    var otherElement = document.getElementById(otherId);
+    if (otherElement) {
+      otherElement.style.display = 'none';
+    }
+  }
+});
+}
   // Verberg alle andere elementen
   otherElements.forEach(function (otherId) {
     if (otherId !== id) {
@@ -14,3 +27,4 @@ function show(id) {
     }
   });
 }
+
