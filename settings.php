@@ -28,7 +28,7 @@
         
         <ul class="info">
         <li>
-          <a href="settings.php"><i class="fa-solid fa-house"></i> Go Back</a>
+          <a href="index.html"><i class="fa-solid fa-house"></i> Go Back</a>
         </li>
         <li>
           <a href="#"><i class="fas fa-info-circle"></i> About</a>
@@ -36,11 +36,47 @@
       </ul>
     </div>
 
-    <div class="account-privacy">
+    <div class="account-privacy" id="account-privacy">
       <h1>Account & Privacy</h1>
       <div class="account-privacy-content">
-      
+      </div>
+    </div> 
+
+    <div class="color-theme" id="color-theme">
+      <h1>Color Theme</h1>
+      <div class="most-used">
+        <h2>Most Used</h2>
+        <div class="most-used-colors">
+          <div class="color" style="background-color: #f1c40f;" onclick="changeTheme('#f1c40f')"></div>
+          <div class="color" style="background-color: #e74c3c;" onclick="changeTheme('#e74c3c')"></div>
+          <div class="color" style="background-color: #3498db;" onclick="changeTheme('#3498db')"></div>
+          <div class="color" style="background-color: #2ecc71;" onclick="changeTheme('#2ecc71')"></div>
+          <div class="color" style="background-color: #9b59b6;" onclick="changeTheme('#9b59b6')"></div>
+          <div class="color" style="background-color: #34495e;" onclick="changeTheme('#34495e')"></div>
+          <input type="text" value="" placeholder="#" id="custom-color"><button onclick="customColor()"> joo</button>
+        </div> 
+      </div>
+    </div>
+
+
+    <div class="overlay">
+      <div class="overlay-content">
+        <h1>invalid color...</h1>
+        <button onclick="closeOverlay()">Close</button>
+      </div>
     </div>
 </body>
 <script src="script.js"></script>
+<script>
+  var inputElement = document.getElementById('custom-color');
+
+// Voeg een event listener toe aan het input event
+inputElement.addEventListener('input', function() {
+  // Controleer of de waarde begint met een #
+  if (inputElement.value.length > 0 && inputElement.value[0] !== '#') {
+    // Voeg een # toe aan het begin van de waarde
+    inputElement.value = '#' + inputElement.value;
+  }
+});
+</script>
 </html>

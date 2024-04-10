@@ -101,6 +101,7 @@ h1 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+
 }
 
 p {
@@ -112,6 +113,7 @@ p {
 a {
   color: #007bff;
   text-decoration: none;
+  transition: 0.4s;
 }
 
 a:hover {
@@ -222,6 +224,7 @@ a:hover {
   padding: 2%;
   margin: 0%;
   border-radius: 8px;
+  transition: 0.4s;
 }
 
 .account-privacy-content{
@@ -233,11 +236,93 @@ a:hover {
 }
 
 .account-privacy{
+  display: none;
+  width: 80vw;
+  flex-direction: column;
+  color: white;
+}
+
+.account-privacy h1{
+  font-size: 2rem;
+  margin: 2vh;
+}
+
+.color-theme{
   width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 5vh;
   color: white;
+}
+
+.color{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2vh;
+  
+}
+
+.color-theme input{
+  padding: 1vh;
+  font-size: 2rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.overlay{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.overlay h1{
+  font-size: 2rem;
+  color: white;
+}
+
+.overlay-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #303030;
+  height: 20vh;
+  width: 40vw;
+  border-radius: 16px;
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.overlay-content button{
+  padding: 1vh 2vw;
+  margin: 2vh;
+  background-color: white;
+  color: red;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
