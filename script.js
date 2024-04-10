@@ -3,7 +3,7 @@ var element = document.getElementById(id);
 element.style.display = 'flex';
 
 
-var otherElements = ['color-picker', 'pass-gen'];
+var otherElements = ['color-picker', 'pass-gen', ' account-privacy', 'color-theme'];
 
 // Verberg alle andere elementen
 otherElements.forEach(function(otherId) {
@@ -15,3 +15,4 @@ otherElements.forEach(function(otherId) {
   }
 });
 }
+
