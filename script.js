@@ -39,7 +39,9 @@ function changeTheme(color){
   const button = document.querySelector('.overlay-content button');
 
   textElements.forEach(element => element.style.color = color);
-  button.style.color = color;
+  if (button) {
+    button.style.color = color;
+  }
 
 
   strongElements.forEach(element => {
@@ -80,7 +82,7 @@ function hexToRgb(hex) {
   
 }
 window.onload = function() {
-  var savedColor = localStorage.getItem('themeColor');
+  const savedColor = localStorage.getItem('themeColor');
   if (savedColor) {
     changeTheme(savedColor);
   }
