@@ -26,5 +26,4 @@ otherElements.forEach(function(otherId) {
       }
     }
   });
-}
 
