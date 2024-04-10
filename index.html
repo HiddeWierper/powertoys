@@ -3,31 +3,37 @@
   <head>
     <title>PowerToys</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
-    <script src="https://kit.fontawesome.com/75e154bde7.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/75e154bde7.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-
- <div class="sidebar" >
-  <span class="logo"><h1>Power <strong>Toys</strong></h1></span>
+    <div class="sidebar">
+      <span class="logo"
+        ><h1>Power <strong>Toys</strong></h1></span
+      >
       <ul>
-        <li onclick="show('color-picker')" >
+        <li onclick="show('color-picker')">
           <a href="#"><i class="fas fa-eye-dropper"></i> Color Picker</a>
         </li>
         <li onclick="show('pass-gen')">
-          <a href="#"><i class="fas fa-palette"></i> Color Palette</a>
+          <a href="#"><i class="fas fa-palette"></i> Password Generator</a>
         </li>
-        <li>
-          <a href="#"><i class="fas fa-image"></i> Image Color Picker</a>
+        <li onclick="show('epoch-conv')">
+          <a href="#"><i class="fas fa-clock"></i> Epoch Converter</a>
         </li>
         <li>
           <a href="#"><i class="fas fa-paint-brush"></i> Image Color Palette</a>
         </li>
+      </ul>
 
-        </ul>
-        
-        <ul class="info">
+      <ul class="info">
         <li>
           <a href="#"><i class="fas fa-cog"></i> Settings</a>
         </li>
@@ -37,12 +43,136 @@
       </ul>
     </div>
     <div class="color-picker" id="color-picker"></div>
-    <div class="pass-gen"  id="pass-gen">
-      <form action="">
-        <input type="text">
-        <input readonly type="text">
-      </form>
+    <div class="pass-gen" id="pass-gen">
+      <input type="text" id="password" readonly onclick="copyPassword()" />
+      <button class="regen" onclick="generatePassword()">
+        <i class="fas fa-sync fa-lg"></i>
+      </button>
+      <div class="settings">
+        <div class="setting">
+          <input
+            type="range"
+            id="letter-count"
+            min="8"
+            max="30"
+            value="30"
+            oninput="generatePassword()"
+            autocomplete="off"
+          />
+          <p>30 characters</p>
+        </div>
+        <div class="setting">
+          <input
+            type="checkbox"
+            id="include-special-chars"
+            onchange="generatePassword()"
+            checked
+            autocomplete="off"
+          />
+          <p>Include Special Characters</p>
+        </div>
+        <div class="setting">
+          <input
+            type="checkbox"
+            id="include-uppercase"
+            onchange="generatePassword()"
+            checked="true"
+            autocomplete="off"
+          />
+          <p>Include Uppercase</p>
+        </div>
+        <div class="setting">
+          <input
+            type="checkbox"
+            id="include-lowercase"
+            onchange="generatePassword()"
+            checked
+            autocomplete="off"
+          />
+          <p>Include Lowercase</p>
+        </div>
+      </div>
+      <div class="settings2">
+        <div class="setting">
+          <input
+            type="range"
+            id="symbol-count"
+            min="8"
+            max="30"
+            value="30"
+            oninput="generatePassword()"
+            autocomplete="off"
+          />
+          <p>30 symbols</p>
+        </div>
+      </div>
     </div>
+    <div class="epoch-conv" id="epoch-conv">
+      <input type="text" id="epoch" readonly onclick="copyPassword()" update="true" />
+      <input type="date" id="date" onchange="convertToEpoch()" />
+      <input type="text" id="dateTime" readonly onclick="copyPassword()" />
+    </div>
+
+    <script>
+      const epochElement = document.getElementById("epoch");
+
+        setInterval(() => {
+          if(epochElement.getAttribute("update") === "true") {
+            epochElement.value = Math.floor(Date.now() / 1000);
+          }
+        }, 1000);
+
+    </script>
+    </script>
+    <script>
+      function generatePassword() {
+        // Define the characters to include in the password
+        let characters = "0123456789";
+
+        if (document.getElementById("include-special-chars").checked) {
+          characters += "!@#$%^&*()";
+        }
+
+        if (document.getElementById("include-uppercase").checked) {
+          characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+
+        if (document.getElementById("include-lowercase").checked) {
+          characters += "abcdefghijklmnopqrstuvwxyz";
+        }
+
+        // Get the value of the slider
+        const length = document.getElementById("letter-count").value;
+        const lengthLabel = document.querySelector(".settings p");
+        let password = "";
+        for (let i = 0; i < length; i++) {
+          const randomIndex = Math.floor(Math.random() * characters.length);
+          password += characters[randomIndex];
+        }
+
+        // Display the generated password
+        document.getElementById("password").value = password;
+        lengthLabel.textContent = `${length} characters`;
+
+        // Change the color of the length label based on the length value
+        if (length < 10) {
+          lengthLabel.style.color = "red";
+        } else if (length >= 10 && length <= 14) {
+          lengthLabel.style.color = "orange";
+        } else {
+          lengthLabel.style.color = "green";
+        }
+      }
+
+      function copyPassword() {
+        const passwordInput = document.getElementById("password");
+        passwordInput.select();
+        passwordInput.setSelectionRange(0, 99999); // For mobile devices
+
+        document.execCommand("copy");
+        alert("Password copied to clipboard!");
+      }
+    </script>
     <script>
       Coloris({
         parent: ".color-picker",
@@ -54,6 +184,23 @@
         format: "auto",
         alpha: true,
       });
+    </script>
+    <script>
+      function convertToEpoch() {
+        const epochElement = document.getElementById("epoch");
+        epochElement.setAttribute("update", "false");
+        const date = document.getElementById("date").value;
+        const epoch = new Date(date).getTime() / 1000;
+        document.getElementById("epoch").value = epoch;
+      }
+
+      function convertToDateTime() {
+        const epochElement = document.getElementById("epoch");
+        epochElement.setAttribute("update", "false");
+        const epoch = document.getElementById("epoch").value;
+        const date = new Date(epoch * 1000).toISOString().split("T")[0];
+        document.getElementById("dateTime").value = date;
+      }
     </script>
     <script src="script.js"></script>
   </body>
